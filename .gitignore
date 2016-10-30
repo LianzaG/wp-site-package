@@ -1,0 +1,9 @@
+vendor
+wp
+.DS_Store
+app/plugins/*
+!app/plugins/lnz-*
+!app/plugins/mc-*
+app/cache/
+app/upgrade/
+app/plugins/hello.php

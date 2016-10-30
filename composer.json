@@ -1,0 +1,57 @@
+{
+    "name": "lianzadesign/wp-bootstrap",
+    "description": "A ready-to-install Wordpress package, version control enabled, implementing a full separation between core/vendor logic and application logic. The package also comes bundled with a handful of wp plugins to start with.",
+    "authors": [
+        {
+            "name": "Julien L. Bosuma",
+            "email": "webmaster@lianzadesign.com"
+        },
+        {
+            "name": "LianzaDesign",
+            "email": "contact@lianzadesign.com"
+        }
+    ],
+    "license": "proprietary",
+    "repositories": [
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        },
+        {
+            "type": "package",
+            "package": {
+            	"type": "webroot",
+                "name": "wordpress/wordpress",
+                "version": "4.6.1",
+                "dist": {
+                    "url": "https://github.com/WordPress/WordPress/archive/4.6.1.zip",
+                    "type": "zip"
+                },
+                "require": {
+                    "fancyguy/webroot-installer": "1.1.0"
+                }
+            }
+        }
+    ],
+    "require": {
+    	"wordpress/wordpress": "^4.6.1",
+        "wpackagist-plugin/wordfence": "^6.2.3",
+        "wpackagist-plugin/ewww-image-optimizer": "^3.1.2",
+        "wpackagist-plugin/autoptimize": "^2.1.0",
+        "wpackagist-plugin/duplicate-post": "^3.0.3",
+        "wpackagist-plugin/wordpress-seo": "^3.7.1",
+        "wpackagist-plugin/contact-form-7": "^4.5.1",
+        "wpackagist-plugin/updraftplus": "~1.12.23",
+        "wpackagist-plugin/akismet": "^3.2",
+        "wpackagist-plugin/google-pagespeed-insights": "~1.0.6",
+        "wpackagist-plugin/enhanced-media-library": "^2.3.1",
+        "wpackagist-plugin/cookie-notice": "^1.2.36",
+    },
+    "extra": {
+        "webroot-dir": "wp",
+        "webroot-package": "wordpress/wordpress",
+        "installer-paths": {
+            "app/plugins/{$name}/": ["type:wordpress-plugin"]
+        }
+    }
+}
