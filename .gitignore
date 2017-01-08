@@ -7,3 +7,4 @@ app/plugins/*
 app/cache/
 app/upgrade/
 app/plugins/hello.php
+*.log

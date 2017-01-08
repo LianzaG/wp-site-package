@@ -38,6 +38,10 @@ define('LINUX_DEV_SERVER', false);
  * NOTE: This will 'not' change the database stored value. The url will revert to
  * the old database value if this line is ever removed from wp-config.
  * You can use the RELOCATE constant to change the siteurl value in the database.
+ *
+ * @see   Admin Backend > Settings > General > Website address
+ *        When setting HARDCODE_SITEURL to false, if you're installing wp core files in
+ *        a subfolder, don't forget to change the 'site url' setting in the admin area.
  */
 define('HARDCODE_SITEURL', false);
 
@@ -57,12 +61,12 @@ switch( CURRENT_SERVER )
 		/***********************************************
 		 * DEVELOPMENT SERVER. OPTIMIZED FOR DEBUGGING *
 		 ***********************************************/
-		
+
 		define('WP_CACHE', false);
-		
+
 		// DEBUG
 		define('WP_DEBUG', true);
-		
+
 		// php.ini runtime overrides
 		if ( CANNOT_EDIT_PHP_INI && WP_DEBUG )
 		{
@@ -70,16 +74,16 @@ switch( CURRENT_SERVER )
 			@ini_set( 'log_errors',     'Off' );
 			@ini_set( 'display_errors', 'On' );
 			// @ini_set( 'error_log',      '/home/example.com/logs/php_error.log' );
-		
+
 		} elseif ( !WP_DEBUG )
 		{
 			@ini_set( 'log_errors',     'Off' );
 			@ini_set( 'display_errors', 'Off' );
 		}
-		
+
 		define('WP_DEBUG_LOG',     false); 	// Used only when WP_DEBUG is true.
 		define('WP_DEBUG_DISPLAY', true);	// Used only when WP_DEBUG is true.
-		
+
 		/**
 		 * The SAVEQUERIES definition saves the database queries to an array to help analyze those queries.
 		 * @see http://codex.wordpress.org/Editing_wp-config.php on how to use it.
@@ -87,56 +91,56 @@ switch( CURRENT_SERVER )
 		define( 'SAVEQUERIES',  false );
 		define( 'SCRIPT_DEBUG', true );
 		define( 'CONCATENATE_SCRIPTS', false );
-		
+
 		// DATABASE
 		define('DB_NAME',     'database_name_here');
 		define('DB_USER',     'username_here');
 		define('DB_PASSWORD', 'password_here');
 		define('DB_HOST',     'localhost');
-		
+
 		// DOMAIN & URL
 		define('PROTOCOL',    'http://');
 		define('DOMAIN_NAME', $_SERVER['HTTP_HOST']);
 		define('PATH_TO_WP',  '/wp/');                     // Use "/" if wp core files are not in a subdirectory.
-		
+
 		/**
 		 * Development Server Document Root - Project Subfolder.
 		 * The subfolder under @see '/Applications/MAMP/htdocs/' (OSX) or under @see '/var/www/html/' (Raspbian).
 		 * Use an empty string if no subfolder is used.
 		 */
 		define('DEV_SERVER_SUBFOLDER', '/subfolder_name_here');
-		
+
 		if (LINUX_DEV_SERVER || HARDCODE_SITEURL) {
 			// Path to WP Core files folder:
 			define('WP_SITEURL', PROTOCOL . DOMAIN_NAME . DEV_SERVER_SUBFOLDER . PATH_TO_WP);
 			// Root of your WordPress site:
 			define('WP_HOME',    PROTOCOL . DOMAIN_NAME . DEV_SERVER_SUBFOLDER);
 		}
-		
+
 		break;
-		
+
 	case 'live':
 	default:
 		/********************************************************
 		 * PRODUCTION SERVER. OPTIMIZED FOR SPEED AND SECURITY. *
 		 ********************************************************/
-		
+
 		define('WP_CACHE', true);
-		
+
 		// DEBUG
 		define('WP_DEBUG', false);
-		
+
 		if ( CANNOT_EDIT_PHP_INI )
 		{
 			@ini_set( 'log_errors',     WP_DEBUG ? 'On' : 'Off' );
 			@ini_set( 'display_errors', 'Off' );
 			// @ini_set( 'error_log',      '/home/example.com/logs/php_error.log' );
 		}
-		
+
 		define( 'SAVEQUERIES',  false );
 		define( 'SCRIPT_DEBUG', false );
 		define( 'CONCATENATE_SCRIPTS', true );
-		
+
 		/*
 		 * When WP_DEBUG is true: log errors in a file (wp-content/debug.log OR custom ini_set()),
 		 * don't show them to end-users.
@@ -144,36 +148,36 @@ switch( CURRENT_SERVER )
 		define('WP_DEBUG_LOG',     true);	// Used only when WP_DEBUG is true.
 		define('WP_DEBUG_DISPLAY', false);	// Used only when WP_DEBUG is true.
 		define('ENFORCE_GZIP', true);
-		
+
 		// DATABASE
 		define('DB_NAME',     'database_name_here');
 		define('DB_USER',     'username_here');
 		define('DB_PASSWORD', 'password_here');
 		define('DB_HOST',     'localhost');
-		
+
 		// DOMAIN & URL
 		define('PROTOCOL',    'http://');
 		define('DOMAIN_NAME', $_SERVER['HTTP_HOST']);
 		define('PATH_TO_WP',  '/wp/'); // If WordPress Core is in a subdirectory. Empty string otherwise.
-		
+
 		/*
 		 * Development Server Document Root's Subfolder.
 		 * Usually empty on a production site, unless its root is in a subdirectory.
 		 */
 		define('DEV_SERVER_SUBFOLDER', '');
-		
+
 		if ( HARDCODE_SITEURL ) {
 			define('WP_SITEURL', PROTOCOL . DOMAIN_NAME . DEV_SERVER_SUBFOLDER . PATH_TO_WP); // path to WP Core files folder
 			define('WP_HOME',    PROTOCOL . DOMAIN_NAME . DEV_SERVER_SUBFOLDER);              // root of your whole WordPress site
 		}
-		
+
 		/*
 		 * Using subdomains to serve static content (CDN) ?
 		 * To prevent WordPress cookies from being sent with each request to static content on your subdomain,
 		 * set the cookie domain to your non-static domain only.
 		 */
 		// define('COOKIE_DOMAIN', DOMAIN_NAME);
-		
+
 		/**
 		 * FTP: On some webhosting configurations, Wordpress automatic updates fail. Try the FTP method.
 		 * If still a no-go, @see: http://codex.wordpress.org/Editing_wp-config.php#Override_of_default_file_permissions
@@ -184,7 +188,7 @@ switch( CURRENT_SERVER )
 		// define('FTP_PASS', 'YOUR FTP PASSWORD');
 		// define('FTP_HOST', 'YOUR FTP HOST (without http:// or ftp://)');
 		// define('FTP_SSL', false);
-		
+
 		break;
 }
 

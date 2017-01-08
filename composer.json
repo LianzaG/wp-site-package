@@ -20,38 +20,40 @@
         {
             "type": "package",
             "package": {
-            	"type": "webroot",
+                "type": "webroot",
                 "name": "wordpress/wordpress",
-                "version": "4.6.1",
+                "version": "4.7",
                 "dist": {
-                    "url": "https://github.com/WordPress/WordPress/archive/4.6.1.zip",
+                    "url": "https://github.com/WordPress/WordPress/archive/4.7.zip",
                     "type": "zip"
                 },
                 "require": {
-                    "fancyguy/webroot-installer": "1.1.0"
+                    "fancyguy/webroot-installer": "~1.1.0"
                 }
             }
         }
     ],
     "require": {
-    	"wordpress/wordpress": "^4.6.1",
-        "wpackagist-plugin/wordfence": "^6.2.3",
-        "wpackagist-plugin/ewww-image-optimizer": "^3.1.2",
+        "wordpress/wordpress": "^4.7",
+        "wpackagist-plugin/wordfence": "^6.2.9",
+        "wpackagist-plugin/ewww-image-optimizer": "^3.2.2",
         "wpackagist-plugin/autoptimize": "^2.1.0",
-        "wpackagist-plugin/duplicate-post": "^3.0.3",
-        "wpackagist-plugin/wordpress-seo": "^3.7.1",
-        "wpackagist-plugin/contact-form-7": "^4.5.1",
-        "wpackagist-plugin/updraftplus": "~1.12.23",
+        "wpackagist-plugin/duplicate-post": "^3.1.2",
+        "wpackagist-plugin/wordpress-seo": "^4.0.2",
+        "wpackagist-plugin/contact-form-7": "^4.6",
+        "wpackagist-plugin/updraftplus": "~1.12.30",
         "wpackagist-plugin/akismet": "^3.2",
         "wpackagist-plugin/google-pagespeed-insights": "~1.0.6",
         "wpackagist-plugin/enhanced-media-library": "^2.3.1",
-        "wpackagist-plugin/cookie-notice": "^1.2.36"
+        "wpackagist-plugin/cookie-notice": "^1.2.36",
+        "wpackagist-theme/twentyseventeen": "^1.0"
     },
     "extra": {
         "webroot-dir": "wp",
         "webroot-package": "wordpress/wordpress",
         "installer-paths": {
-            "app/plugins/{$name}/": ["type:wordpress-plugin"]
+            "app/plugins/{$name}/": ["type:wordpress-plugin"],
+            "app/themes/{$name}/": ["type:wordpress-theme"]
         }
     }
 }
